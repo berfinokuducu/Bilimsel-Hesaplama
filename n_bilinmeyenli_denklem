@@ -1,0 +1,23 @@
+def deklem_coz(matrix):
+    for i in range(len(matrix)):
+        for j in range(len(matrix)-1, i, -1):
+            temp = matrix[j][i]
+            for k in range(len(matrix[0])):
+                matrix[j][k] = -temp/matrix[i][i] * matrix[i][k] + matrix[j][k]
+
+    for i in range(len(matrix)-1, 0, -1):
+        for j in range(i):
+            temp = matrix[j][i]
+            for k in range(len(matrix[0])):
+                matrix[j][k] = -temp/matrix[i][i] * matrix[i][k] + matrix[j][k]
+
+    for i in range(len(matrix)):
+        temp = matrix[i][i]
+        for j in range(len(matrix[0])):
+            matrix[i][j] = matrix[i][j]/temp
+
+    return matrix
+a1, b1, c1 = 1, 2, 1
+a2, b2, c2 = 3, 4, -2
+A = [[a1, b1, c1], [a2, b2, c2]]
+print(deklem_coz(A))
